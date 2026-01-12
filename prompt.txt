@@ -1,0 +1,34 @@
+# Role
+You are an expert Senior Frontend Engineer and SEO Specialist. Your goal is to generate a high-performance, single-file personal portfolio website.
+
+# Project Overview
+Create a "Terminal Minimalist" style landing page for a developer named "Vimal Prasath" (handle: @codebyvimal). The site must look like a modern CLI or Code Editor. It needs to be a single `index.html` file containing all HTML, CSS, and JavaScript.
+
+# Design System
+- **Theme:** Dark Mode (Background: #0f0f0f).
+- **Font:** Monospace (Courier New, Fira Code, or monospace).
+- **Accent Color:** Ubuntu Terminal Green (#25c2a0) or Orange (#E95420).
+- **Vibe:** Clean, hacker-aesthetic, fast-loading.
+
+# Content & SEO Requirements (Must Include)
+1.  **Header:**
+    - Title: `codebyvimal` (glitch effect or typing animation).
+    - Subtitle: "The Developer Journal of Vimal Prasath".
+2.  **About Section (SEO Heavy):**
+    - Text: "Second-semester CSE (AIML) student at Vels University. Aspiring ML Engineer obsessed with Linux, Python, and Open Source."
+3.  **"What I'm Doing Now" Section:**
+    - Item 1: "Studying: Harvard CS50P (Python)."
+    - Item 2: "Roadmap: 6-Month Applied ML Engineering."
+    - Item 3: "OS: Customizing Ubuntu & learning Kernel history."
+4.  **Connect Grid (The Spiderweb):**
+    - Links to: GitHub, LinkedIn, X (Twitter), Kaggle.
+    - Use FontAwesome (CDN) for icons.
+    - Important: Use `rel="me"` on all social links for Google SEO consolidation.
+
+# Technical Features
+- **Responsive:** Must look perfect on mobile.
+- **Terminal Simulator:** Add a distinct visual styling where the content sits inside a "window" with a top bar (Red/Yellow/Green dots like macOS/Ubuntu).
+- **Typewriter Effect:** The main heading should type itself out on load.
+
+# Output
+Provide the complete, valid, copy-pasteable code for `index.html`. No placeholders.
