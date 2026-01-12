@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Developer Journal of Vimal Prasath (codebyvimal). Aspiring ML Engineer, CSE (AIML) Student, Linux Enthusiast.">
+    <meta name="keywords" content="Vimal Prasath, codebyvimal, ML Engineer, CSE student, Linux, Python, Portfolio">
+    <meta name="author" content="Vimal Prasath">
+    <title>Vimal Prasath | codebyvimal</title>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0f0f0f;
+            --terminal-bg: #1a1b1e;
+            --text-color: #e0e0e0;
+            --accent-color: #25c2a0; /* Ubuntu Terminal Green */
+            --accent-hover: #1e9e82;
+            --dim-text: #888;
+            --font-stack: 'Fira Code', 'Courier New', Courier, monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-stack);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Terminal Window Container */
+        .terminal-window {
+            width: 100%;
+            max-width: 800px;
+            background-color: var(--terminal-bg);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+            border: 1px solid #333;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Terminal Header (Traffic Lights) */
+        .terminal-header {
+            background-color: #25262b;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .traffic-lights {
+            display: flex;
+            gap: 8px;
+        }
+
+        .light {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .light.red { background-color: #ff5f56; }
+        .light.yellow { background-color: #ffbd2e; }
+        .light.green { background-color: #27c93f; }
+
+        .terminal-title {
+            margin-left: 20px;
+            font-size: 0.9rem;
+            color: var(--dim-text);
+        }
+
+        /* Terminal Body */
+        .terminal-body {
+            padding: 30px;
+        }
+
+        /* Header Section */
+        header {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            background-color: var(--accent-color);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .subtitle {
+            color: var(--dim-text);
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .prompt-symbol {
+            color: var(--accent-color);
+            margin-right: 10px;
+            user-select: none;
+        }
+
+        p, li {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+
+        /* Connect Grid */
+        .connect-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .social-link:hover {
+            background-color: rgba(37, 194, 160, 0.1);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .social-link i {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--accent-color);
+        }
+
+        .social-link span {
+            font-size: 0.9rem;
+        }
+
+        /* Glitch Effect Class (Optional add-on) */
+        .glitch {
+            position: relative;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--dim-text);
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .terminal-body { padding: 20px; }
+            .connect-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="terminal-window">
+        <!-- Terminal Header -->
+        <div class="terminal-header">
+            <div class="traffic-lights">
+                <div class="light red"></div>
+                <div class="light yellow"></div>
+                <div class="light green"></div>
+            </div>
+            <div class="terminal-title">vimal@ubuntu:~/portfolio</div>
+        </div>
+
+        <!-- Terminal Content -->
+        <div class="terminal-body">
+            
+            <!-- Hero / Header -->
+            <header>
+                <div class="typing-container">
+                    <span class="prompt-symbol">$</span>
+                    <h1 id="typing-text"></h1><span class="cursor">&nbsp;</span>
+                </div>
+                <p class="subtitle">The Developer Journal of Vimal Prasath</p>
+            </header>
+
+            <!-- About Section -->
+            <section id="about">
+                <h2><span class="prompt-symbol">></span>about_me.txt</h2>
+                <p>
+                    Second-semester CSE (AIML) student at Vels University. 
+                    Aspiring ML Engineer obsessed with Linux, Python, and Open Source.
+                </p>
+            </section>
+
+            <!-- What I'm Doing Now -->
+            <section id="now">
+                <h2><span class="prompt-symbol">></span>./current_status.sh</h2>
+                <ul>
+                    <li><span class="prompt-symbol">*</span> Studying: Harvard CS50P (Python)</li>
+                    <li><span class="prompt-symbol">*</span> Roadmap: 6-Month Applied ML Engineering</li>
+                    <li><span class="prompt-symbol">*</span> OS: Customizing Ubuntu & learning Kernel history</li>
+                </ul>
+            </section>
+
+            <!-- Connect Section -->
+            <section id="connect">
+                <h2><span class="prompt-symbol">></span>ssh connect</h2>
+                <div class="connect-grid">
+                    <a href="https://github.com/codebyvimal" target="_blank" rel="me" class="social-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/codebyvimal/" target="_blank" rel="me" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://x.com/codebyvimal" target="_blank" rel="me" class="social-link">
+                        <i class="fab fa-twitter"></i> <!-- 'x-twitter' might not be in older versions, using twitter as fallback or x-twitter if v6 -->
+                        <span>Twitter/X</span>
+                    </a>
+                    <a href="https://www.kaggle.com/codebyvimal" target="_blank" rel="me" class="social-link">
+                        <i class="fab fa-kaggle"></i>
+                        <span>Kaggle</span>
+                    </a>
+                     <a href="https://www.instagram.com/codebyvimal.py/" target="_blank" rel="me" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                </div>
+            </section>
+
+            <footer>
+                <p>&copy; 2026 Vimal Prasath. Built with &lt;3 and Console.log</p>
+            </footer>
+
+        </div>
+    </div>
+
+    <script>
+        // Typewriter Effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const textToType = "codebyvimal";
+            const typeContainer = document.getElementById('typing-text');
+            let index = 0;
+
+            function typeWriter() {
+                if (index < textToType.length) {
+                    typeContainer.innerHTML += textToType.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 150); // Typing speed
+                }
+            }
+
+            // Start typing after a short delay
+            setTimeout(typeWriter, 500);
+        });
+    </script>
+</body>
+</html>
